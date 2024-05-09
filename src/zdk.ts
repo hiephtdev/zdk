@@ -131,12 +131,12 @@ export class ZDK {
    */
   public token = async ({
     token,
-    network = this.defaultNetworks[0],
+    networks = this.defaultNetworks,
     includeFullDetails = false,
   }: OptionalNetwork<TokenQueryArgs>) =>
     await this.sdk.token({
       token,
-      network,
+      networks,
       includeFullDetails,
     });
 
@@ -437,10 +437,11 @@ export class ZDK {
    * @param {SearchQueryArgs} - pagination, query, filter
    * @returns {Promise<SearchQuery>}
    */
-  public search = async ({ pagination, query, filter }: SearchQueryArgs) =>
+  public search = async ({ pagination, query, filter, networks = this.defaultNetworks }: SearchQueryArgs) =>
     this.sdk.search({
       filter,
       query: { text: query },
       ...this.getPaginationOptions(pagination),
+      networks,
     });
 }

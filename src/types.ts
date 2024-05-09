@@ -130,7 +130,7 @@ export type OffchainOrderQueryArgs = {
 };
 
 export type TokenQueryArgs = {
-  network?: NetworkInput;
+  network?: NetworkInput[] | NetworkInput;
   token: TokenInput;
   includeFullDetails?: boolean;
 };
@@ -152,6 +152,7 @@ export type SearchQueryArgs = {
   query: string;
   filter?: SearchQueryVariables['filter'];
   pagination?: SearchQueryVariables['pagination'];
+  networks?: NetworkInput[];
 };
 
 export interface AggregateOptions {
